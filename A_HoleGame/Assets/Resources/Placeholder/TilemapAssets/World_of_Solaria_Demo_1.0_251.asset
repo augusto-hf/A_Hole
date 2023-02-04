@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: World_of_Solaria_Demo_1.0_251
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 871046000, guid: 75a783fb213bde34eb1e33661a2cf60a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3386793, g: 0.28764686, b: 0.6037736, a: 1}
   m_Transform:
     e00: 1
     e01: 0

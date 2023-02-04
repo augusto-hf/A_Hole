@@ -199,7 +199,7 @@ MonoBehaviour:
   wallTile: {fileID: 0}
   groundTile: {fileID: 0}
   wallTileMap: {fileID: 0}
-  castDistance: 2
+  castDistance: 1
   blockDestroyTime: 0
   raycastLayer:
     serializedVersion: 2

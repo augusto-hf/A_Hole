@@ -31,26 +31,29 @@ public class CharacterBuilder : MonoBehaviour
         RaycastDirection();
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
     private void RaycastDirection()
     {
         hit = Physics2D.Raycast(transform.position, direction, castDistance, raycastLayer.value);
         Vector2 endpos = raycastPosition.position + direction;
-        Debug.DrawLine(raycastPosition.position, hit.point);
+        
+        //debug
+        if(hit.point != Vector2.zero)
+            Debug.DrawLine(raycastPosition.position, hit.point);
 
         if (Input.GetButton("Interact"))
         {
-            Debug.Log("interagi!");
+            //Debug.Log("interagi!");
             if (hit.collider && !destroyingBlock)
             {
                 destroyingBlock = true;
                 StartCoroutine(DestroyBlock(hit.collider.gameObject.GetComponent<Tilemap>(), endpos));
             }
         }
+    }
+
+    private void interactWithWall()
+    {
+
     }
 
     IEnumerator DestroyBlock(Tilemap map, Vector2 pos)
