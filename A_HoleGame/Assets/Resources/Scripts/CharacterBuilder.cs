@@ -40,7 +40,7 @@ public class CharacterBuilder : MonoBehaviour
     {
         hit = Physics2D.Raycast(transform.position, direction, castDistance, raycastLayer.value);
         Vector2 endpos = raycastPosition.position + direction;
-        Debug.DrawLine(transform.position, hit.point);
+        Debug.DrawLine(raycastPosition.position, hit.point);
 
         if (Input.GetButton("Interact"))
         {
@@ -62,7 +62,7 @@ public class CharacterBuilder : MonoBehaviour
 
         map.SetTile(new Vector3Int((int)pos.x, (int)pos.y), null);
 
-        destroyingBlock = true;
+        destroyingBlock = false;
     }
 
     IEnumerator PlaceBlock(Tilemap map, Vector2 pos)

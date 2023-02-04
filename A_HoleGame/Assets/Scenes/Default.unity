@@ -363,6 +363,10 @@ PrefabInstance:
       propertyPath: wallTileMap
       value: 
       objectReference: {fileID: 6168189966193603856}
+    - target: {fileID: 1207849800, guid: 8b5c0c1458afd8242b2612ebb6f10889, type: 3}
+      propertyPath: castDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4690749159302482504, guid: 8b5c0c1458afd8242b2612ebb6f10889, type: 3}
       propertyPath: m_RootOrder
       value: 2
