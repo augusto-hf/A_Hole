@@ -9,7 +9,7 @@ public enum ItemState
     Final
 }
 
-[CreateAssetMenu(menuName = "item/testObject", fileName = "testObject")]
+[CreateAssetMenu(menuName = "Item/TestObject", fileName = "ItemObject")]
 public class ObjectItem : ScriptableObject
 {
     [SerializeField] private Sprite iconSprite;
