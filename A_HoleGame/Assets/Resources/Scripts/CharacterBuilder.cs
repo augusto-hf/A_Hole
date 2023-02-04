@@ -8,10 +8,12 @@ public class CharacterBuilder : MonoBehaviour
     public RuleTile wallTile, groundTile;
     public Tilemap wallTileMap;
 
+    //Raycast Variables
     [SerializeField] float castDistance = 1.0f, blockDestroyTime = 0.0f;
     [SerializeField] LayerMask raycastLayer;
-
-    Vector3 direction;
+    
+    Camera cam;
+    Vector3 direction, mousePos;
     Transform raycastPosition;
     RaycastHit2D hit;
 
@@ -20,6 +22,7 @@ public class CharacterBuilder : MonoBehaviour
     private void Start()
     {
         raycastPosition = transform;
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
     private void Update()
     {
@@ -28,18 +31,28 @@ public class CharacterBuilder : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.y = Input.GetAxis("Vertical");
         }
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        direction = -(transform.position - mousePos);
+
         RaycastDirection();
+        interactWithWall();
     }
+
+    
 
     private void RaycastDirection()
     {
         hit = Physics2D.Raycast(transform.position, direction, castDistance, raycastLayer.value);
-        Vector2 endpos = raycastPosition.position + direction;
-        
+         
         //debug
         if(hit.point != Vector2.zero)
             Debug.DrawLine(raycastPosition.position, hit.point);
 
+    }
+
+    private void interactWithWall()
+    {
+        Vector2 endpos = raycastPosition.position + direction;
         if (Input.GetButton("Interact"))
         {
             //Debug.Log("interagi!");
@@ -49,11 +62,6 @@ public class CharacterBuilder : MonoBehaviour
                 StartCoroutine(DestroyBlock(hit.collider.gameObject.GetComponent<Tilemap>(), endpos));
             }
         }
-    }
-
-    private void interactWithWall()
-    {
-
     }
 
     IEnumerator DestroyBlock(Tilemap map, Vector2 pos)
