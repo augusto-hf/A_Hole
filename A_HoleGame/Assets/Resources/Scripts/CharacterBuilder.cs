@@ -17,6 +17,10 @@ public class CharacterBuilder : MonoBehaviour
 
     bool destroyingBlock = false, placingBlock = false;
 
+    private void Start()
+    {
+        raycastPosition = transform;
+    }
     private void Update()
     {
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
@@ -24,7 +28,7 @@ public class CharacterBuilder : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.y = Input.GetAxis("Vertical");
         }
-
+        RaycastDirection();
     }
 
     private void FixedUpdate()
@@ -40,6 +44,7 @@ public class CharacterBuilder : MonoBehaviour
 
         if (Input.GetButton("Interact"))
         {
+            Debug.Log("interagi!");
             if (hit.collider && !destroyingBlock)
             {
                 destroyingBlock = true;
