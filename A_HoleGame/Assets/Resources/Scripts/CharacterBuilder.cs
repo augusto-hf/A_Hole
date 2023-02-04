@@ -17,7 +17,7 @@ public class CharacterBuilder : MonoBehaviour
     Transform raycastPosition;
     RaycastHit2D hit;
 
-    bool destroyingBlock = false, placingBlock = false;
+    bool destroyingBlock = false, placingBlock = false, alternativeSelectMode = false;
 
     private void Start()
     {
@@ -26,20 +26,36 @@ public class CharacterBuilder : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (Input.GetButton("AlternativeSelection"))
         {
-            direction.x = Input.GetAxis("Horizontal");
-            direction.y = Input.GetAxis("Vertical");
+            alternativeSelectMode = true;
         }
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-        direction = -(transform.position - mousePos);
-
+        else if(Input.GetButtonUp("AlternativeSelection"))
+        {
+            alternativeSelectMode = false;
+        }
+        findDirection();
         RaycastDirection();
         interactWithWall();
     }
 
-    
-
+    private void findDirection()
+    {
+        if (alternativeSelectMode)
+        {
+            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            direction = -(transform.position - mousePos);
+        }
+        else
+        {
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                direction.x = Mathf.Clamp(Input.GetAxis("Horizontal"),-1,1);
+                direction.y = Mathf.Clamp(Input.GetAxis("Vertical"),-1,1);
+            }
+        }
+    }
+        
     private void RaycastDirection()
     {
         hit = Physics2D.Raycast(transform.position, direction, castDistance, raycastLayer.value);
@@ -55,9 +71,10 @@ public class CharacterBuilder : MonoBehaviour
         Vector2 endpos = raycastPosition.position + direction;
         if (Input.GetButton("Interact"))
         {
-            //Debug.Log("interagi!");
+            Debug.Log("interagi!");
             if (hit.collider && !destroyingBlock)
             {
+                Debug.Log("tentei destruir");
                 destroyingBlock = true;
                 StartCoroutine(DestroyBlock(hit.collider.gameObject.GetComponent<Tilemap>(), endpos));
             }
