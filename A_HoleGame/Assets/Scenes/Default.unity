@@ -2506,6 +2506,14 @@ PrefabInstance:
       propertyPath: wallTileMap
       value: 
       objectReference: {fileID: 6168189966193603856}
+    - target: {fileID: 1207849800, guid: 8b5c0c1458afd8242b2612ebb6f10889, type: 3}
+      propertyPath: selectionTile
+      value: 
+      objectReference: {fileID: 11400000, guid: 6928068887baf744b92da7b64300f367, type: 2}
+    - target: {fileID: 1207849800, guid: 8b5c0c1458afd8242b2612ebb6f10889, type: 3}
+      propertyPath: selectionTileMap
+      value: 
+      objectReference: {fileID: 6168189966193603853}
     - target: {fileID: 2680076625914079157, guid: 8b5c0c1458afd8242b2612ebb6f10889, type: 3}
       propertyPath: sizeInventory
       value: 4
@@ -2627,6 +2635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b678486f784de884885fd3c736f7b44f, type: 3}
+--- !u!1839735485 &6168189966193603853 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 6841235771869084983, guid: b678486f784de884885fd3c736f7b44f, type: 3}
+  m_PrefabInstance: {fileID: 6168189966193603852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &6168189966193603856 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 8204731223340904827, guid: b678486f784de884885fd3c736f7b44f, type: 3}

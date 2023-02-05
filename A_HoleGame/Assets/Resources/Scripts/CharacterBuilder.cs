@@ -5,8 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class CharacterBuilder : MonoBehaviour
 {
-    public RuleTile wallTile, groundTile;
-    public Tilemap wallTileMap;
+    public Tile wallTile, selectionTile;
+    public Tilemap wallTileMap, selectionTileMap;
+    Collider2D lastSelectedTile;
 
     //Raycast Variables
     [SerializeField] float castDistance = 1.0f, blockDestroyTime = 0.0f;
@@ -84,14 +85,28 @@ public class CharacterBuilder : MonoBehaviour
     private void interactWithWall()
     {
         Vector2 endpos = raycastPosition.position + lastDirection;
+        //Selecting
+        if (hit.collider && !destroyingBlock)
+        {
+            lastSelectedTile = hit.collider;
+            PlaceBlock(selectionTileMap, endpos, selectionTile);
+        }
+        if (lastSelectedTile != null && lastSelectedTile != hit.collider)
+        {
+            Debug.Log("Agora faz o L");
+            DestroyBlock(selectionTileMap, lastSelectedTile.transform.position);
+            lastSelectedTile = null;
+        }
+
+        //Pressing Commands
         if (Input.GetButton("Interact"))
         {
             if (hit.collider && !destroyingBlock)
             {
                 Debug.Log("tentei destruir");
-                Debug.Log("Agora faz o L");
+                //Debug.Log("Agora faz o L");
                 destroyingBlock = true;
-                StartCoroutine(DestroyBlock(hit.collider.gameObject.GetComponent<Tilemap>(), endpos));
+                StartCoroutine(DestroyBlock(wallTileMap, endpos));
             }
         }
     }
@@ -108,14 +123,13 @@ public class CharacterBuilder : MonoBehaviour
         destroyingBlock = false;
     }
 
-    IEnumerator PlaceBlock(Tilemap map, Vector2 pos)
+    void PlaceBlock(Tilemap map, Vector2 pos, Tile tile)
     {
-        yield return new WaitForSeconds(0f);
 
         pos.x = Mathf.Floor(pos.x);
         pos.y = Mathf.Floor(pos.y);
 
-        map.SetTile(new Vector3Int((int)pos.x, (int)pos.y), wallTile);
+        map.SetTile(new Vector3Int((int)pos.x, (int)pos.y), tile);
 
         placingBlock = true;
     }
@@ -125,5 +139,4 @@ public class CharacterBuilder : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(this.transform.position, lastDirection * castDistance);  
     }
-
 }
