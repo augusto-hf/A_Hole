@@ -9,6 +9,7 @@ public class InventoryHolder : MonoBehaviour
     [SerializeField] private InventorySystem inventory;
 
     public InventorySystem Inventory { get => inventory; }
+    public int SizeInventory { get => sizeInventory; }
 
     private void Awake() {
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ public class InventorySystem
     [SerializeField] private List<InventorySlot> inventorySlots;
 
     public List<InventorySlot> InventorySlots { get => inventorySlots; }
-    public int InventorySize { get => inventorySlots.Count; }
+
+    public Action<InventorySlot> OnChangeSlot;
 
     public InventorySystem (int size)
     {
@@ -85,11 +87,13 @@ public class InventorySystem
     }
     #endregion
 
-    private void UpdateSlot(InventorySlot inv)
+    private void UpdateSlot(InventorySlot slot)
     {
-        if (inv.ItemData != null)
+        OnChangeSlot?.Invoke(slot);
+
+        if (slot.ItemData != null)
         {
-            Debug.Log($"Update Slot => name: {inv.ItemData.name} amount: {inv.Amount}");
+            Debug.Log($"Update Slot => name: {slot.ItemData.name} amount: {slot.Amount}");
         }else
         {
             Debug.Log($"No have item here");

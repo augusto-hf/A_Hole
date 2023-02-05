@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1244375049502526712}
   - component: {fileID: 1244375049502526713}
   - component: {fileID: 1244375049502526718}
+  - component: {fileID: 4229363270534120044}
   m_Layer: 5
   m_Name: InventorySlot_UI
   m_TagString: Untagged
@@ -123,6 +124,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4229363270534120044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244375049502526716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36a4dc831fddba4a95b782ad12a83ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSprite: {fileID: 1244375049550219971}
+  countText: {fileID: 470537319167071781}
 --- !u!1 &1244375049550219969
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,10 +247,10 @@ RectTransform:
   m_Father: {fileID: 1244375049502526719}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 22.1, y: -24}
-  m_SizeDelta: {x: 40.086, y: 37.6074}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -42.5, y: 34.5}
+  m_SizeDelta: {x: 50, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8398598020050327577
 CanvasRenderer:
@@ -292,7 +307,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.65
+  m_fontSize: 35.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

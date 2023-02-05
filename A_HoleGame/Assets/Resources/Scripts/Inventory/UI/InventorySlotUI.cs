@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class InventorySlotUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image iconSprite;
+    [SerializeField] private TextMeshProUGUI countText;
+
+    private void Awake()
     {
-        
+        ClearSlotUI();   
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ClearSlotUI()
     {
-        
+        iconSprite.sprite = null;
+        iconSprite.color = Color.clear;
+        countText.text = "";
     }
+
+    public void UpdateSlotUI(ItemData itemData, int amount)
+    {
+        iconSprite.sprite = itemData.Icon;
+        iconSprite.color = Color.white;
+        countText.text = amount.ToString();
+
+    }
+
 }

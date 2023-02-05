@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2680076625914079157}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,8 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallTile: {fileID: 0}
-  groundTile: {fileID: 0}
+  selectionTile: {fileID: 0}
   wallTileMap: {fileID: 0}
+  selectionTileMap: {fileID: 0}
   castDistance: 1
   blockDestroyTime: 0
   raycastLayer:
@@ -204,4 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6495ad6a2362e7b45abbbc5e38b99859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeInventory: 10
+  sizeInventory: 12
+  inventory:
+    inventorySlots: []
