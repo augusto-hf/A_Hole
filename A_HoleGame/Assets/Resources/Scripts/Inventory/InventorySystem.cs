@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 [System.Serializable]
 public class InventorySystem
@@ -20,7 +21,7 @@ public class InventorySystem
         }
     }
 
-    public bool AddItemToInventory(ObjectItem itemData, int amount)
+    public bool AddItemToInventory(ItemData itemData, int amount)
     {
         if(ContainsItem(itemData, out List<InventorySlot> invSlot))
         {
@@ -28,6 +29,7 @@ public class InventorySystem
             {
                 if (slot.AddAmount(amount))
                 {
+                    Debug.Log("item stacked");
                     return true;
                 }
             }
@@ -42,7 +44,7 @@ public class InventorySystem
         return false;
     }
 
-    public bool ContainsItem(ObjectItem itemData, out List<InventorySlot> invSlot)
+    public bool ContainsItem(ItemData itemData, out List<InventorySlot> invSlot)
     {
         invSlot = inventorySlots.Where(s => s.ItemData == itemData).ToList();
         return invSlot != null ? true : false ;
@@ -51,7 +53,7 @@ public class InventorySystem
     public bool HasFreeSlot(out InventorySlot freeSlot)
     {
         freeSlot = inventorySlots.FirstOrDefault(s => s.ItemData == null);
-        return freeSlot == null ? true : false;
+        return freeSlot == null ? false : true;
     }
 
 }

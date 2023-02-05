@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277e0460ed184604ab9e793f448ea89d, type: 3}
   m_Name: a
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 0}
-  worldIconSprite: {fileID: 0}
-  nameItem: 
-  descriptionItem: 
+  iconSprite: {fileID: -1402076287, guid: 75a783fb213bde34eb1e33661a2cf60a, type: 3}
+  worldIconSprite: {fileID: -1402076287, guid: 75a783fb213bde34eb1e33661a2cf60a, type: 3}
+  nameItem: Test
+  descriptionItem: "isso \xE9 um teste"
   itemState: 0

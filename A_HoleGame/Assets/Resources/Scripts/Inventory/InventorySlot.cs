@@ -6,13 +6,13 @@ using UnityEngine;
 public class InventorySlot
 {
     public const int MAX_AMOUNT = 99;
-    private ObjectItem itemData;
+    private ItemData itemData;
     private int amount;
 
-    public ObjectItem ItemData { get => itemData; }
+    public ItemData ItemData { get => itemData; }
     public int Amount { get => amount; }
 
-    public InventorySlot(ObjectItem itemData, int amount)
+    public InventorySlot(ItemData itemData, int amount)
     {
 
         int minAmount = 1;
@@ -48,9 +48,8 @@ public class InventorySlot
             this.amount = MAX_AMOUNT;
             return false;
         }
-        
-        int validateAmount = Mathf.Min(amount, MAX_AMOUNT);
-        this.amount = validateAmount;
+
+        this.amount = amountResult;
 
         return true;
     }
@@ -78,7 +77,7 @@ public class InventorySlot
         this.amount = -1;
     }
 
-    public void UpdateSlot(ObjectItem itemData, int amount)
+    public void UpdateSlot(ItemData itemData, int amount)
     {
         this.itemData = itemData;
         this.amount = amount;
