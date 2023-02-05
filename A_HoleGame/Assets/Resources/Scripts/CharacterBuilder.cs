@@ -13,7 +13,7 @@ public class CharacterBuilder : MonoBehaviour
     [SerializeField] LayerMask raycastLayer;
     
     Camera cam;
-    Vector3 direction, mousePos;
+    Vector3 lastDirection, mousePos, inputDirection;
     Transform raycastPosition;
     RaycastHit2D hit;
 
@@ -44,21 +44,35 @@ public class CharacterBuilder : MonoBehaviour
         if (alternativeSelectMode)
         {
             mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-            direction = -(transform.position - mousePos);
+            lastDirection = -(transform.position - mousePos);
         }
         else
         {
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
-                direction.x = Input.GetAxis("Horizontal");
-                direction.y = Input.GetAxis("Vertical");
+                
+                if (Input.GetAxisRaw("Vertical") == 0)
+                {
+                    lastDirection.x = Input.GetAxisRaw("Horizontal");
+                    lastDirection.y = 0;
+                }
+                else if (Input.GetAxisRaw("Horizontal") == 0)
+                {
+                    lastDirection.y = Input.GetAxisRaw("Vertical");
+                    lastDirection.x = 0;
+                }
+                else
+                {
+                    lastDirection.x = Input.GetAxisRaw("Horizontal");
+                    lastDirection.y = Input.GetAxisRaw("Vertical");
+                }                 
             }
         }
     }
         
     private void RaycastDirection()
     {
-        hit = Physics2D.Raycast(transform.position, direction, castDistance, raycastLayer.value);
+        hit = Physics2D.Raycast(transform.position, lastDirection, castDistance, raycastLayer.value);
          
         //debug
         if(hit.point != Vector2.zero)
@@ -68,7 +82,7 @@ public class CharacterBuilder : MonoBehaviour
 
     private void interactWithWall()
     {
-        Vector2 endpos = raycastPosition.position + direction;
+        Vector2 endpos = raycastPosition.position + lastDirection;
         if (Input.GetButton("Interact"))
         {
             Debug.Log("interagi!");
