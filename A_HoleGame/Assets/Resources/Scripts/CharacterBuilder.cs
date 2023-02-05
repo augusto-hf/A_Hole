@@ -50,8 +50,8 @@ public class CharacterBuilder : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
             {
-                direction.x = Mathf.Clamp(Input.GetAxis("Horizontal"),-1,1);
-                direction.y = Mathf.Clamp(Input.GetAxis("Vertical"),-1,1);
+                direction.x = Input.GetAxis("Horizontal");
+                direction.y = Input.GetAxis("Vertical");
             }
         }
     }
