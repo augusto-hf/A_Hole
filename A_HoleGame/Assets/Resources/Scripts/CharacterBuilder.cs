@@ -7,12 +7,13 @@ public class CharacterBuilder : MonoBehaviour
 {
     public Tile wallTile, selectionTile;
     public Tilemap wallTileMap, selectionTileMap;
-    Collider2D lastSelectedTile;
+    
 
     //Raycast Variables
     [SerializeField] float castDistance = 1.0f, blockDestroyTime = 0.0f;
     [SerializeField] LayerMask raycastLayer;
-    
+
+    Vector2 endpos, lastSelectedTile;
     Camera cam;
     Vector3 lastDirection, mousePos, inputDirection;
     Transform raycastPosition;
@@ -74,7 +75,7 @@ public class CharacterBuilder : MonoBehaviour
         
     private void RaycastDirection()
     {
-        hit = Physics2D.Raycast(transform.position, lastDirection, castDistance, raycastLayer.value);
+        hit = Physics2D.Raycast(raycastPosition.position, lastDirection, castDistance, raycastLayer.value);
          
         //debug
         if(hit.point != Vector2.zero)
@@ -84,20 +85,22 @@ public class CharacterBuilder : MonoBehaviour
 
     private void interactWithWall()
     {
-        Vector2 endpos = raycastPosition.position + lastDirection;
+        endpos = raycastPosition.position + lastDirection;
         //Selecting
         if (hit.collider && !destroyingBlock)
         {
-            lastSelectedTile = hit.collider;
-            PlaceBlock(selectionTileMap, endpos, selectionTile);
+            Vector2 ExactEndPos = new Vector2(Mathf.Floor(endpos.x), Mathf.Floor(endpos.y));
+            if (lastSelectedTile != ExactEndPos)
+            {
+                StartCoroutine(DestroyBlock(selectionTileMap, lastSelectedTile));
+                lastSelectedTile = ExactEndPos;
+            }         
+            PlaceBlock(selectionTileMap, lastSelectedTile, selectionTile);
         }
-        if (lastSelectedTile != null && lastSelectedTile != hit.collider)
+        else
         {
-            Debug.Log("Agora faz o L");
-            DestroyBlock(selectionTileMap, lastSelectedTile.transform.position);
-            lastSelectedTile = null;
+            StartCoroutine(DestroyBlock(selectionTileMap, lastSelectedTile));
         }
-
         //Pressing Commands
         if (Input.GetButton("Interact"))
         {
@@ -125,7 +128,6 @@ public class CharacterBuilder : MonoBehaviour
 
     void PlaceBlock(Tilemap map, Vector2 pos, Tile tile)
     {
-
         pos.x = Mathf.Floor(pos.x);
         pos.y = Mathf.Floor(pos.y);
 
