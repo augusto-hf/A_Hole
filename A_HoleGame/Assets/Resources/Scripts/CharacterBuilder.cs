@@ -65,7 +65,8 @@ public class CharacterBuilder : MonoBehaviour
                 {
                     lastDirection.x = Input.GetAxisRaw("Horizontal");
                     lastDirection.y = Input.GetAxisRaw("Vertical");
-                }                 
+                }
+                lastDirection.Normalize();             
             }
         }
     }
@@ -85,10 +86,10 @@ public class CharacterBuilder : MonoBehaviour
         Vector2 endpos = raycastPosition.position + lastDirection;
         if (Input.GetButton("Interact"))
         {
-            Debug.Log("interagi!");
             if (hit.collider && !destroyingBlock)
             {
                 Debug.Log("tentei destruir");
+                Debug.Log("Agora faz o L");
                 destroyingBlock = true;
                 StartCoroutine(DestroyBlock(hit.collider.gameObject.GetComponent<Tilemap>(), endpos));
             }
@@ -118,4 +119,11 @@ public class CharacterBuilder : MonoBehaviour
 
         placingBlock = true;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(this.transform.position, lastDirection * castDistance);  
+    }
+
 }
