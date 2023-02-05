@@ -10,7 +10,7 @@ public enum ItemState
 }
 
 [CreateAssetMenu(menuName = "Item/TestObject", fileName = "ItemObject")]
-public class ObjectItem : ScriptableObject
+public class ItemData : ScriptableObject
 {
     [SerializeField] private Sprite iconSprite;
     [SerializeField] private Sprite worldIconSprite;
