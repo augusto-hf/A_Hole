@@ -18,7 +18,7 @@ public class ItemWorld : MonoBehaviour
             
             if (playerInventory.Inventory.AddItemToInventory(ItemData, 1))
             {
-                Debug.Log("item added");
+                //Debug.Log("item added");
                 Destroy(this.gameObject);
 
             }
