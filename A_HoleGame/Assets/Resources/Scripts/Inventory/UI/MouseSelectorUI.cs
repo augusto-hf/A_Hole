@@ -9,10 +9,13 @@ public class MouseSelectorUI : MonoBehaviour
 {
     [SerializeField] private Image iconSprite;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private Vector3 offsetMousePosition;
 
     private InventorySlot slot;
     private InventorySlotUI slotUI;
+    private RectTransform rect;
     private Camera cam;
+    
     
 
     private void Awake()
@@ -21,6 +24,7 @@ public class MouseSelectorUI : MonoBehaviour
         slot = new InventorySlot();
         ClearSlotUI();
         InventorySlotUI.OnClickSlot += GrabItem;
+        rect = GetComponent<RectTransform>();
 
     }
     private void Start()
@@ -30,8 +34,8 @@ public class MouseSelectorUI : MonoBehaviour
 
     private void Update()
     {
-        Vector2 mousePositon = cam.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = mousePositon;
+        Vector3 mousePositon = Input.mousePosition + offsetMousePosition;        
+        rect.position = mousePositon;
 
     }
 
