@@ -15,14 +15,12 @@ public class MouseSelectorUI : MonoBehaviour
     private InventorySlotUI slotUI;
     private RectTransform rect;
     private Camera cam;
-    
-    
 
     private void Awake()
     {
         
         slot = new InventorySlot();
-        ClearSlotUI();
+        ClearSlotMouseUI();
         InventorySlotUI.OnClickSlot += GrabItem;
         rect = GetComponent<RectTransform>();
 
@@ -50,30 +48,31 @@ public class MouseSelectorUI : MonoBehaviour
         else if (slot.ItemData == null && this.slot.ItemData != null) //Slot do botão n tem nada e o slot do mouse esta com conteudo
         {
             slot.UpdateSlot(this.slot.ItemData, this.slot.Amount);
-            ui.UpdateSlotUI(this.slot);
-            this.ClearSlotUI();
+            this.ClearSlotMouseUI();
             
         } 
         else if (slot.ItemData != null && this.slot.ItemData == null) //Caso o slot do botão tenha algo e Caso o slot do mouse esteja vazio
         {
 
             this.slot.UpdateSlot(slot.ItemData, slot.Amount);
-            UpdateSlotUI();
-            ui.ClearSlotUI();
+            UpdateSlotMouseUI();
+            slot.ClearSlot();
+            
+            
         }
         
 
     }
     
 
-    public void ClearSlotUI()
+    public void ClearSlotMouseUI()
     {
         slot.ClearSlot();
         iconSprite.sprite = null;
         iconSprite.color = Color.clear;
         countText.text = "";
     }
-    public void UpdateSlotUI()
+    public void UpdateSlotMouseUI()
     {
         iconSprite.sprite = slot.ItemData.Icon;
         iconSprite.color = Color.white;

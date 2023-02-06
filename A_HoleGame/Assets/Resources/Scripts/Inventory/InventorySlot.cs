@@ -17,7 +17,6 @@ public class InventorySlot
 
     public InventorySlot(ItemData itemData, int amount)
     {
-
         int minAmount = 1;
         int nullAmount = -1;
 
@@ -39,7 +38,8 @@ public class InventorySlot
     }
     public InventorySlot()
     {
-        ClearSlot();
+        this.itemData = null;
+        this.amount = -1;
     }
 
     public bool AddAmount(int amount)

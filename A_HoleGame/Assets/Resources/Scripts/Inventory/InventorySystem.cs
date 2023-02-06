@@ -103,7 +103,7 @@ public class InventorySystem
     public bool ContainsItem(ItemData itemData, out List<InventorySlot> invSlot)
     {
         invSlot = inventorySlots.Where(s => s.ItemData == itemData).ToList();
-        return invSlot != null ? true : false;
+        return invSlot.Count > 0 ? true : false;
 
     }
     public bool ContainsItem(ItemData itemData, out InventorySlot invSlot)

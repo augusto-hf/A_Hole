@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[System.Serializable]
 public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Image iconSprite;
@@ -16,25 +17,31 @@ public class InventorySlotUI : MonoBehaviour
 
     private void Start()
     {
-        slot = new InventorySlot();
-        ClearSlotUI();
         button = GetComponent<Button>();
         button.onClick.AddListener(() => ClickSlot());
     }
 
+    public void SetSlot(InventorySlot slot)
+    {
+        this.slot = slot;
+    }
+
     public void ClearSlotUI()
     {
-        slot.ClearSlot();
         iconSprite.sprite = null;
         iconSprite.color = Color.clear;
         countText.text = "";
     }
-    public void UpdateSlotUI(InventorySlot inv)
+    public void UpdateSlotUI(ItemData itemData, int amount)
     {
-        slot.UpdateSlot(inv.ItemData, inv.Amount);
-        iconSprite.sprite = inv.ItemData.Icon;
+        if ( itemData ==  null)
+        {
+            ClearSlotUI();
+            return;
+        }
+        iconSprite.sprite = itemData.Icon;
         iconSprite.color = Color.white;
-        countText.text = inv.Amount.ToString();
+        countText.text = amount.ToString();
 
     }
     private void ClickSlot()

@@ -19,6 +19,7 @@ public class InventoryUI : MonoBehaviour
             
             for (int i = 0 ; i < slotCount; i++)
             {
+                inventorySlotsUIs[i].SetSlot(inventory.Inventory.InventorySlots[i]);
                 inventoryUI.Add(inventory.Inventory.InventorySlots[i], inventorySlotsUIs[i]);
             }
             
@@ -37,7 +38,7 @@ public class InventoryUI : MonoBehaviour
     private void UpdateInventoryUI(InventorySlot slot)
     {
         inventoryUI.TryGetValue(slot, out InventorySlotUI slotUI);
-        slotUI.UpdateSlotUI(slot); 
+        slotUI.UpdateSlotUI(slot.ItemData, slot.Amount); 
     }
 
 }
