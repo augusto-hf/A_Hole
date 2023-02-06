@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c687768d0049c3b4e8696e99f587d649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallTile: {fileID: 0}
-  selectionTile: {fileID: 0}
+  wallTile: {fileID: 11400000, guid: 556326f4055390048a05e802fed1a0dc, type: 2}
+  selectionTile: {fileID: 11400000, guid: 6176d5ad3a311f949bd558b3ceb46911, type: 2}
   wallTileMap: {fileID: 0}
   selectionTileMap: {fileID: 0}
   castDistance: 1
@@ -207,4 +207,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeInventory: 12
   inventory:
-    inventorySlots: []
+    inventorySlots:
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0
+    - itemData: {fileID: 0}
+      amount: 0

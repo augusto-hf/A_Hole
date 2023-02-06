@@ -5,8 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class CharacterBuilder : MonoBehaviour
 {
-    public Tile wallTile, selectionTile;
-    public Tilemap wallTileMap, selectionTileMap;
+    [SerializeField] TileBase  wallTile, selectionTile;
+    [SerializeField] Tilemap wallTileMap, selectionTileMap;
     
 
     //Raycast Variables
@@ -126,7 +126,7 @@ public class CharacterBuilder : MonoBehaviour
         destroyingBlock = false;
     }
 
-    void PlaceBlock(Tilemap map, Vector2 pos, Tile tile)
+    void PlaceBlock(Tilemap map, Vector2 pos, TileBase tile)
     {
         pos.x = Mathf.Floor(pos.x);
         pos.y = Mathf.Floor(pos.y);
