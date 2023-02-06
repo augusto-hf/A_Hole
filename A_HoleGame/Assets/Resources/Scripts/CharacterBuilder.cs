@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class CharacterBuilder : MonoBehaviour
 {
     //Character Variables
-    bool haveWallBreakingTools = false;
+    bool haveWallBreakingTools = true;
     //Tile Variables
     [SerializeField] TileBase  wallTile, selectionTile;
     [SerializeField] Tilemap wallTileMap, selectionTileMap;
@@ -16,16 +16,20 @@ public class CharacterBuilder : MonoBehaviour
 
     Vector2 endpos, lastSelectedTile;
     Camera cam;
-    Vector3 lastDirection, mousePos, inputDirection;
+    Vector3 mousePos, inputDirection;
     Transform raycastPosition;
     RaycastHit2D hit;
     //Command Variables
     bool isScratchingWall = false, isDestroyingBlock = false, isPlacingBlock = false, alternativeSelectMode = false;
+    //Other Script Variables
+    CharacterController characterController;
+    Vector3 lastDirection;
 
     private void Start()
     {
         raycastPosition = transform;
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        characterController = GetComponent<CharacterController>();
     }
     private void Update()
     {
@@ -51,29 +55,9 @@ public class CharacterBuilder : MonoBehaviour
         }
         else
         {
-            if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
-            {
-                
-                if (Input.GetAxisRaw("Vertical") == 0)
-                {
-                    lastDirection.x = Input.GetAxisRaw("Horizontal");
-                    lastDirection.y = 0;
-                }
-                else if (Input.GetAxisRaw("Horizontal") == 0)
-                {
-                    lastDirection.y = Input.GetAxisRaw("Vertical");
-                    lastDirection.x = 0;
-                }
-                else
-                {
-                    lastDirection.x = Input.GetAxisRaw("Horizontal");
-                    lastDirection.y = Input.GetAxisRaw("Vertical");
-                }
-                lastDirection.Normalize();             
-            }
+            lastDirection = characterController.directionNormalized();
         }
     }
-        
     private void RaycastDirection()
     {
         hit = Physics2D.Raycast(raycastPosition.position, lastDirection, castDistance, raycastLayer.value);
@@ -83,7 +67,6 @@ public class CharacterBuilder : MonoBehaviour
             Debug.DrawLine(raycastPosition.position, hit.point);
 
     }
-
     private void interactWithWall()
     {
         endpos = raycastPosition.position + lastDirection;
