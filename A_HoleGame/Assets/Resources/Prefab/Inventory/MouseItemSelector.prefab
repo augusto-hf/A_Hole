@@ -264,3 +264,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 4099697649851610866}
   countText: {fileID: 4089271915049574694}
+  offsetMousePosition: {x: 80, y: -90, z: 0}
