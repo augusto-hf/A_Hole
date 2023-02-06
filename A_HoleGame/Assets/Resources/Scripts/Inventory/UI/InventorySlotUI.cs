@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,24 +10,36 @@ public class InventorySlotUI : MonoBehaviour
     [SerializeField] private Image iconSprite;
     [SerializeField] private TextMeshProUGUI countText;
     private Button button;
+    private InventorySlot slot;
 
-    private void Awake()
+    public static Action<InventorySlotUI,InventorySlot> OnClickSlot;
+
+    private void Start()
     {
+        slot = new InventorySlot();
         ClearSlotUI();
+        button = GetComponent<Button>();
+        button.onClick.AddListener(() => ClickSlot());
     }
 
     public void ClearSlotUI()
     {
+        slot.ClearSlot();
         iconSprite.sprite = null;
         iconSprite.color = Color.clear;
         countText.text = "";
     }
-    public void UpdateSlotUI(ItemData itemData, int amount)
+    public void UpdateSlotUI(InventorySlot inv)
     {
-        iconSprite.sprite = itemData.Icon;
+        slot.UpdateSlot(inv.ItemData, inv.Amount);
+        iconSprite.sprite = inv.ItemData.Icon;
         iconSprite.color = Color.white;
-        countText.text = amount.ToString();
+        countText.text = inv.Amount.ToString();
 
+    }
+    private void ClickSlot()
+    {
+        OnClickSlot?.Invoke(this, slot);
     }
 
 

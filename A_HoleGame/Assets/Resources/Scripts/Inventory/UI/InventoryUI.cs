@@ -37,7 +37,7 @@ public class InventoryUI : MonoBehaviour
     private void UpdateInventoryUI(InventorySlot slot)
     {
         inventoryUI.TryGetValue(slot, out InventorySlotUI slotUI);
-        slotUI.UpdateSlotUI(slot.ItemData, slot.Amount); 
+        slotUI.UpdateSlotUI(slot); 
     }
 
 }

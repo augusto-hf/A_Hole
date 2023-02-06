@@ -85,7 +85,6 @@ public class InventorySlot
 
     public void UpdateSlot(ItemData itemData, int amount)
     {
-        
         this.itemData = itemData;
         this.amount = amount;
         UpdateInventorySlot?.Invoke(this);
