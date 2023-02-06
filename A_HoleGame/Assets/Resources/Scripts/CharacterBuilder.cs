@@ -5,10 +5,11 @@ using UnityEngine.Tilemaps;
 
 public class CharacterBuilder : MonoBehaviour
 {
+    //Character Variables
+    bool haveWallBreakingTools = false;
+    //Tile Variables
     [SerializeField] TileBase  wallTile, selectionTile;
     [SerializeField] Tilemap wallTileMap, selectionTileMap;
-    
-
     //Raycast Variables
     [SerializeField] float castDistance = 1.0f, blockDestroyTime = 0.0f;
     [SerializeField] LayerMask raycastLayer;
@@ -18,8 +19,8 @@ public class CharacterBuilder : MonoBehaviour
     Vector3 lastDirection, mousePos, inputDirection;
     Transform raycastPosition;
     RaycastHit2D hit;
-
-    bool destroyingBlock = false, placingBlock = false, alternativeSelectMode = false;
+    //Command Variables
+    bool isScratchingWall = false, isDestroyingBlock = false, isPlacingBlock = false, alternativeSelectMode = false;
 
     private void Start()
     {
@@ -87,7 +88,7 @@ public class CharacterBuilder : MonoBehaviour
     {
         endpos = raycastPosition.position + lastDirection;
         //Selecting
-        if (hit.collider && !destroyingBlock)
+        if (hit.collider && !isDestroyingBlock)
         {
             Vector2 ExactEndPos = new Vector2(Mathf.Floor(endpos.x), Mathf.Floor(endpos.y));
             if (lastSelectedTile != ExactEndPos)
@@ -104,16 +105,38 @@ public class CharacterBuilder : MonoBehaviour
         //Pressing Commands
         if (Input.GetButton("Interact"))
         {
-            if (hit.collider && !destroyingBlock)
+            if (hit.collider && !isDestroyingBlock)
             {
-                Debug.Log("tentei destruir");
-                //Debug.Log("Agora faz o L");
-                destroyingBlock = true;
-                StartCoroutine(DestroyBlock(wallTileMap, endpos));
+                if (haveWallBreakingTools)
+                {
+                    isDestroyingBlock = true;
+                    StartCoroutine(DestroyBlock(wallTileMap, endpos));
+                }
+                else if (!haveWallBreakingTools && isScratchingWall)
+                {
+                    
+                    StartCoroutine(ScratchWall(wallTileMap, endpos));
+                }
             }
         }
     }
+    IEnumerator ScratchWall(Tilemap map, Vector2 pos)
+    {
+        yield return new WaitForSeconds(blockDestroyTime);
 
+        pos.x = Mathf.Floor(pos.x);
+        pos.y = Mathf.Floor(pos.y);
+
+        Tile tileToScratch;
+
+        //if (tileToScratch == map.GetTile<Tile>(new Vector3Int((int)pos.x, (int)pos.y), null))
+        //{
+
+        //}
+
+
+        isScratchingWall = false;
+    }
     IEnumerator DestroyBlock(Tilemap map, Vector2 pos)
     {
         yield return new WaitForSeconds(blockDestroyTime);
@@ -123,7 +146,7 @@ public class CharacterBuilder : MonoBehaviour
 
         map.SetTile(new Vector3Int((int)pos.x, (int)pos.y), null);
 
-        destroyingBlock = false;
+        isDestroyingBlock = false;
     }
 
     void PlaceBlock(Tilemap map, Vector2 pos, TileBase tile)
@@ -133,7 +156,7 @@ public class CharacterBuilder : MonoBehaviour
 
         map.SetTile(new Vector3Int((int)pos.x, (int)pos.y), tile);
 
-        placingBlock = true;
+        isPlacingBlock = true;
     }
 
     private void OnDrawGizmos()
