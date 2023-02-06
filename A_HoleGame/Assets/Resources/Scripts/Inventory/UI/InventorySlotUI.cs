@@ -8,10 +8,11 @@ public class InventorySlotUI : MonoBehaviour
 {
     [SerializeField] private Image iconSprite;
     [SerializeField] private TextMeshProUGUI countText;
+    private Button button;
 
     private void Awake()
     {
-        ClearSlotUI();   
+        ClearSlotUI();
     }
 
     public void ClearSlotUI()
@@ -20,7 +21,6 @@ public class InventorySlotUI : MonoBehaviour
         iconSprite.color = Color.clear;
         countText.text = "";
     }
-
     public void UpdateSlotUI(ItemData itemData, int amount)
     {
         iconSprite.sprite = itemData.Icon;
@@ -28,5 +28,7 @@ public class InventorySlotUI : MonoBehaviour
         countText.text = amount.ToString();
 
     }
+
+
 
 }

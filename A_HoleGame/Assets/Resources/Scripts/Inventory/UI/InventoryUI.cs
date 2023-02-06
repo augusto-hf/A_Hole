@@ -12,8 +12,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Start() 
     {
-        int slotCount = 0;
-        slotCount = inventory.SizeInventory;
+        int slotCount = inventory.SizeInventory;
         if (slotCount == inventorySlotsUIs.Count)
         {
             inventoryUI = new Dictionary<InventorySlot, InventorySlotUI>(slotCount);
