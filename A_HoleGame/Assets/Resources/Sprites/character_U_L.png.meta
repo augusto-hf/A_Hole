@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 40a72e18cd27b7a4e9d350450fa64763
+guid: d1be55237c418be4a8aaa10e14b03832
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_character_U_L_0
+      name: character_U_L_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32ab80d6d7608264eac9d5dc4dfb91d1
-      internalID: -1166763400
+      spriteID: 6515c993a498c78489c36611c34ffd97
+      internalID: -1717481520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_character_U_L_1
+      name: character_U_L_1
       rect:
         serializedVersion: 2
         x: 32
@@ -176,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7cd2eaf91a876d4298791887f203da3
-      internalID: -118846054
+      spriteID: db4039aa4902e904d87894f53023915c
+      internalID: 1170800087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_character_U_L_2
+      name: character_U_L_2
       rect:
         serializedVersion: 2
         x: 64
@@ -197,14 +197,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d07bacf20f87d04692e8ac76d00c0e7
-      internalID: 1633413677
+      spriteID: 6d6258307ec7f9d4ea30fd9803f200c0
+      internalID: -2122390529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_character_U_L_3
+      name: character_U_L_3
       rect:
         serializedVersion: 2
         x: 96
@@ -218,14 +218,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24422af68c6df724fba8a56a03c014bb
-      internalID: 1110278753
+      spriteID: cdf1777ac1934f248a44e7f231e0f5ea
+      internalID: 104995819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_character_U_L_4
+      name: character_U_L_4
       rect:
         serializedVersion: 2
         x: 128
@@ -239,8 +239,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24c0d366efd00264bb1a0ed1b72b5d4d
-      internalID: 1291149528
+      spriteID: d5eeadb7baceb474eb62b549bf05350a
+      internalID: -2116439489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: character_U_L_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d29b7c9a3de4734988c90942abeeb93
+      internalID: -1924264472
       vertices: []
       indices: 
       edges: []
@@ -256,11 +277,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_character_U_L_2: 1633413677
-      idle_character_U_L_0: -1166763400
-      idle_character_U_L_3: 1110278753
-      idle_character_U_L_1: -118846054
-      idle_character_U_L_4: 1291149528
+      character_U_L_4: -2116439489
+      character_U_L_1: 1170800087
+      character_U_L_3: 104995819
+      character_U_L_5: -1924264472
+      character_U_L_2: -2122390529
+      character_U_L_0: -1717481520
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
