@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ItemState
-{
-    Material,
-    Final
-}
-
 [CreateAssetMenu(menuName = "Item/TestObject", fileName = "ItemObject")]
 public class ItemData : ScriptableObject
 {
@@ -16,7 +10,6 @@ public class ItemData : ScriptableObject
     [SerializeField] private Sprite worldIconSprite;
     [SerializeField] private string nameItem;
     [SerializeField] [TextArea(2, 3)] private string descriptionItem;
-    [SerializeField] private ItemState itemState;
 
     #region Get and Set
     
@@ -24,7 +17,6 @@ public class ItemData : ScriptableObject
     public Sprite WorldIcon { get => worldIconSprite; }
     public string Name { get => nameItem; }
     public string Description { get => descriptionItem; }
-    public ItemState State { get => itemState; }
 
     #endregion
 

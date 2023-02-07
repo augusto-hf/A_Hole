@@ -32,7 +32,7 @@ public class InventorySystem
             {
                 if (slot.AddAmount(amount))
                 {
-                    Debug.Log("item stacked");
+                    //Debug.Log("item stacked");
                     return true;
                 }
             }
@@ -93,10 +93,10 @@ public class InventorySystem
 
         if (slot.ItemData != null)
         {
-            Debug.Log($"Update Slot => name: {slot.ItemData.name} amount: {slot.Amount}");
+            //Debug.Log($"Update Slot => name: {slot.ItemData.name} amount: {slot.Amount}");
         }else
         {
-            Debug.Log($"No have item here");
+            //Debug.Log($"No have item here");
         }
         
     }
