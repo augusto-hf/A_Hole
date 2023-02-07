@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1e0c07f6e1dd14d80aa3f9dcf651b4, type: 3}
   m_Name: Pedra
   m_EditorClassIdentifier: 
-  iconSprite: {fileID: 0}
-  worldIconSprite: {fileID: 0}
-  nameItem: 
-  descriptionItem: 
+  iconSprite: {fileID: 319692394, guid: 75a783fb213bde34eb1e33661a2cf60a, type: 3}
+  worldIconSprite: {fileID: 319692394, guid: 75a783fb213bde34eb1e33661a2cf60a, type: 3}
+  nameItem: Pedra
+  descriptionItem: "\xC9 uma pedra... e \xE9 isso"
