@@ -28,7 +28,6 @@ public class CharacterController : MonoBehaviour
     public void AnimationManager()
     {
         animator.SetBool("isWalking", rb.velocity.magnitude > 0);
-        Debug.Log("Faz o omega L");
         animator.SetFloat("HorizontalDirection", directionNormalized().x);
         animator.SetFloat("VerticalDirection", directionNormalized().y);
     }
