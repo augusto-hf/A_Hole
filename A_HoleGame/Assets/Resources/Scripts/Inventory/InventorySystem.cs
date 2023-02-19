@@ -20,7 +20,7 @@ public class InventorySystem
         for (int i = 0; i < size; i++)
         {
             inventorySlots.Add(new InventorySlot());
-            inventorySlots[i].UpdateInventorySlot += UpdateSlot;
+            inventorySlots[i].OnUpdateInventorySlot += UpdateSlot;
         }
     }
 

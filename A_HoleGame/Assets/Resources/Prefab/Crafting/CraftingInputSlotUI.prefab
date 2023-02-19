@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 1628823178510934802}
   - component: {fileID: 3941152306803871571}
   - component: {fileID: 1722689600824377676}
-  - component: {fileID: 3145063873288485853}
+  - component: {fileID: 7734874264321325727}
   m_Layer: 5
   m_Name: CraftingInputSlotUI
   m_TagString: Untagged
@@ -347,7 +347,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3145063873288485853
+--- !u!114 &7734874264321325727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8926178711609935699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 641017659417afa429b9ac61b2d0ce69, type: 3}
+  m_Script: {fileID: 11500000, guid: c36a4dc831fddba4a95b782ad12a83ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 5962147879974568610}

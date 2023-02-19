@@ -13,7 +13,7 @@ public class InventorySlot
     public ItemData ItemData { get => itemData; }
     public int Amount { get => amount; }
 
-    public Action<InventorySlot> UpdateInventorySlot;
+    public Action<InventorySlot> OnUpdateInventorySlot;
 
     public InventorySlot(ItemData itemData, int amount)
     {
@@ -49,12 +49,12 @@ public class InventorySlot
         if (amountResult > MAX_AMOUNT)
         {
             this.amount = MAX_AMOUNT;
-            UpdateInventorySlot?.Invoke(this);
+            OnUpdateInventorySlot?.Invoke(this);
             return false;
         }
 
         this.amount = amountResult;
-        UpdateInventorySlot?.Invoke(this);
+        OnUpdateInventorySlot?.Invoke(this);
         return true;
     }
     public bool DecreaseAmout (int amount)
@@ -71,7 +71,7 @@ public class InventorySlot
         int validateAmount = Mathf.Max(this.amount - amount, minAmount);
         this.amount = validateAmount;
 
-        UpdateInventorySlot?.Invoke(this);
+        OnUpdateInventorySlot?.Invoke(this);
         return true;
 
     }
@@ -80,14 +80,14 @@ public class InventorySlot
     {
         this.itemData = null;
         this.amount = -1;
-        UpdateInventorySlot?.Invoke(this);
+        OnUpdateInventorySlot?.Invoke(this);
     }
 
     public void UpdateSlot(ItemData itemData, int amount)
     {
         this.itemData = itemData;
         this.amount = amount;
-        UpdateInventorySlot?.Invoke(this);
+        OnUpdateInventorySlot?.Invoke(this);
     }
 
 }
